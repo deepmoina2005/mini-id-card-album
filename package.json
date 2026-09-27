@@ -1,0 +1,65 @@
+{
+  "name": "mini-id-card-albam",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "electron:dev": "concurrently \"vite\" \"wait-on tcp:5173 && cross-env NODE_ENV=development electron .\"",
+    "electron:build": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.minidocumentalbumcreator.app",
+    "productName": "Mini Document Album Creator",
+    "directories": {
+      "output": "dist_electron"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "dist/vite.svg"
+    }
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "html-to-image": "^1.11.13",
+    "lucide-react": "^1.48.0",
+    "pdf-lib": "^1.17.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-dropzone": "^20.1.2",
+    "react-easy-crop": "^6.2.3",
+    "react-router-dom": "^7.18.4",
+    "react-to-print": "^3.3.0",
+    "tailwind-merge": "^3.7.0",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "autoprefixer": "^10.6.1",
+    "concurrently": "^10.0.5",
+    "cross-env": "^10.1.0",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3",
+    "electron-is-dev": "^3.0.1",
+    "oxlint": "^1.81.0",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0",
+    "wait-on": "^9.1.0"
+  }
+}
